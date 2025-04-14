@@ -25,7 +25,7 @@ class CarController(private val view: View) {
 
     private fun inputCars(): Cars {
         val carNames = view.readCarNames()
-        return Cars(carNames, RandomNumberGenerator)
+        return Cars.from(carNames, RandomNumberGenerator)
     }
 
     private fun printWinner(cars: Cars) {
