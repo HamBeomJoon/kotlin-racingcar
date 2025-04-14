@@ -1,9 +1,9 @@
 package racingcar.model
 
-import racingcar.model.numberGenerator.RandomNumberGenerator
+import racingcar.model.numberGenerator.NumberGenerator
 
-class Cars(carNames: List<String>) {
-    private val cars: List<Car> = carNames.map { name -> Car(name, RandomNumberGenerator) }
+class Cars(carNames: List<String>, private val strategy: NumberGenerator) {
+    private val cars: List<Car> = carNames.map { name -> Car(name, strategy) }
 
     init {
         require(carNames.distinct().size == carNames.size) { "자동차 이름에 중복이 있습니다." }
