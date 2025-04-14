@@ -19,7 +19,7 @@ class RacingCarsTest {
         racingCars.race()
 
         // then
-        val movedPositions = racingCars.getAll().map { it.position }
+        val movedPositions = racingCars.cars.map { it.position }
         assertTrue(movedPositions.all { it == 1 })
     }
 
@@ -30,7 +30,7 @@ class RacingCarsTest {
 
         racingCars.race()
 
-        val movedPositions = racingCars.getAll().map { it.position }
+        val movedPositions = racingCars.cars.map { it.position }
         assertTrue(movedPositions.all { it == 0 })
     }
 
@@ -39,7 +39,7 @@ class RacingCarsTest {
         val racingCars = RacingCars.from(listOf("a", "b", "c"), FixedNumberGenerator(5))
         racingCars.race()
 
-        racingCars.getAll()[0].moveOrStop()
+        racingCars.cars[0].moveOrStop()
 
         val winners = racingCars.getWinners().names()
         assertThat(winners).isEqualTo("a")
