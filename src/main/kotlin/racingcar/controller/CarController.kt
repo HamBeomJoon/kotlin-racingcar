@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import racingcar.model.Car
 import racingcar.model.Cars
 import racingcar.model.numberGenerator.RandomNumberGenerator
 import racingcar.view.View
@@ -17,7 +16,7 @@ class CarController(private val view: View) {
             view.printNewLine()
         }
 
-        printWinner(cars.getWinner())
+        printWinner(cars)
     }
 
     private fun inputCars(): Cars {
@@ -25,7 +24,8 @@ class CarController(private val view: View) {
         return Cars(carNames, RandomNumberGenerator)
     }
 
-    private fun printWinner(winners: List<Car>) {
-        view.printWinners(winners)
+    private fun printWinner(cars: Cars) {
+        val winners = cars.getWinner()
+        view.printWinners(winners.names())
     }
 }

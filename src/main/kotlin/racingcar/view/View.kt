@@ -1,6 +1,5 @@
 package racingcar.view
 
-import racingcar.model.Car
 import racingcar.model.Cars
 
 class View {
@@ -22,9 +21,8 @@ class View {
         }
     }
 
-    fun printWinners(winners: List<Car>) {
-        val names = winners.joinToString(", ") { car -> car.name }
-        println("최종 우승자: $names")
+    fun printWinners(winners: String) {
+        println("최종 우승자: $winners")
     }
 
     fun printNewLine() = println()
