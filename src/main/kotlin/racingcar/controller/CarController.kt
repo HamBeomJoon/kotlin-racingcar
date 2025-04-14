@@ -10,13 +10,17 @@ class CarController(private val view: View) {
         val count = view.readRaceCount()
 
         view.printResultHeader()
+        racing(count, cars)
+
+        printWinner(cars)
+    }
+
+    private fun racing(count: Int, cars: Cars) {
         repeat(count) {
             cars.race()
             view.printRacing(cars)
             view.printNewLine()
         }
-
-        printWinner(cars)
     }
 
     private fun inputCars(): Cars {
