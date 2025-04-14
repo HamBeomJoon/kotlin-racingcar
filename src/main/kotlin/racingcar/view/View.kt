@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.model.Cars
+import racingcar.model.RacingCars
 
 class View {
     fun readCarNames(): List<String> {
@@ -15,8 +15,8 @@ class View {
 
     fun printResultHeader() = println("\n실행 결과")
 
-    fun printRacing(cars: Cars) {
-        for (car in cars.getAll()) {
+    fun printRacing(racingCars: RacingCars) {
+        for (car in racingCars.cars) {
             println("${car.name} : " + "-".repeat(car.position))
         }
     }

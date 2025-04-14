@@ -2,11 +2,9 @@ package racingcar.model
 
 import racingcar.model.numberGenerator.NumberGenerator
 
-class Cars private constructor(
-    private val cars: List<Car>,
+class RacingCars private constructor(
+    val cars: List<Car>,
 ) {
-    fun getAll(): List<Car> = cars.toList()
-
     fun race() {
         for (car in cars) {
             car.moveOrStop()
@@ -19,11 +17,11 @@ class Cars private constructor(
     }
 
     companion object {
-        fun from(carNames: List<String>, strategy: NumberGenerator): Cars {
+        fun from(carNames: List<String>, strategy: NumberGenerator): RacingCars {
             require(carNames.distinct().size == carNames.size) { "자동차 이름에 중복이 있습니다." }
 
             val cars = carNames.map { name -> Car(name, strategy) }
-            return Cars(cars)
+            return RacingCars(cars)
         }
     }
 }
