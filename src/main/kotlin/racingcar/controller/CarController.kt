@@ -29,7 +29,7 @@ class CarController(private val view: View) {
     }
 
     private fun printWinner(cars: Cars) {
-        val winners = cars.getWinner()
+        val winners = cars.getWinners()
         view.printWinners(winners.names())
     }
 }

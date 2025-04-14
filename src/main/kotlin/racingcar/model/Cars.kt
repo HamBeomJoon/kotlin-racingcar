@@ -17,7 +17,7 @@ class Cars(carNames: List<String>, private val strategy: NumberGenerator) {
         }
     }
 
-    fun getWinner(): Winners {
+    fun getWinners(): Winners {
         val maxPosition = cars.maxOf { car -> car.position }
         return Winners(cars.filter { car -> car.position == maxPosition })
     }
