@@ -3,6 +3,7 @@ package racingcar
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import racingcar.model.Car
+import racingcar.model.numberGenerator.FixedNumberGenerator
 
 class CarTest {
     @Test
@@ -19,17 +20,15 @@ class CarTest {
 
     @Test
     fun `무작위 값이 4이상이면 자동차는 전진한다`() {
-        val car1 = Car("미플")
-        val randomNumber = 4
-        car1.move(randomNumber)
+        val car1 = Car("미플", FixedNumberGenerator(4))
+        car1.moveOrStop()
         assertThat(car1.position).isEqualTo(1)
     }
 
     @Test
     fun `무작위 값이 4미만이면 자동차는 전진한다`() {
-        val car1 = Car("미플")
-        val randomNumber = 3
-        car1.move(randomNumber)
+        val car1 = Car("미플", FixedNumberGenerator(3))
+        car1.moveOrStop()
         assertThat(car1.position).isEqualTo(0)
     }
 }
