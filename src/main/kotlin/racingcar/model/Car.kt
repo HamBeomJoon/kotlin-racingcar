@@ -1,5 +1,7 @@
 package racingcar.model
 
+import racingcar.model.numberGenerator.NumberGenerator
+
 class Car(val name: String, private val strategy: NumberGenerator) {
     var position = 0
         private set
