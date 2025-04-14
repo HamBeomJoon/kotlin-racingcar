@@ -1,9 +1,8 @@
 package racingcar.controller
 
-import racingcar.view.View
 import racingcar.model.Car
 import racingcar.model.Cars
-import racingcar.model.RandomNumberGenerator
+import racingcar.view.View
 
 class CarController(private val view: View) {
     fun run() {
