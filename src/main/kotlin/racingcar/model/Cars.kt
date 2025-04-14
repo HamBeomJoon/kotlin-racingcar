@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.model
 
 class Cars(val carNames: List<String>) {
     val cars = carNames.map { name -> Car(name) }
