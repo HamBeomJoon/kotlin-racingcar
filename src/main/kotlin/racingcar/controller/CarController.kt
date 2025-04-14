@@ -11,8 +11,9 @@ class CarController(private val view: View) {
 
         view.printResultHeader()
         repeat(count) {
-            race(cars)
             cars.race()
+            view.printRacing(cars)
+            view.printNewLine()
         }
 
         printWinner(cars.getWinner())
