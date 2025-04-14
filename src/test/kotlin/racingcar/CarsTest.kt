@@ -13,7 +13,7 @@ class CarsTest {
     fun `모든 자동차가 한 번씩 이동한다`() {
         // given
         val names = listOf("pobi", "woni", "jun")
-        val cars = Cars(names, FixedNumberGenerator(5))
+        val cars = Cars.from(names, FixedNumberGenerator(5))
 
         // when
         cars.race()
@@ -26,7 +26,7 @@ class CarsTest {
     @Test
     fun `모든 자동차가 이동하지 않는다`() {
         val names = listOf("pobi", "woni", "jun")
-        val cars = Cars(names, FixedNumberGenerator(3))
+        val cars = Cars.from(names, FixedNumberGenerator(3))
 
         cars.race()
 
@@ -36,19 +36,19 @@ class CarsTest {
 
     @Test
     fun `최대 위치에 있는 자동차가 우승자이다`() {
-        val cars = Cars(listOf("a", "b", "c"), FixedNumberGenerator(5))
+        val cars = Cars.from(listOf("a", "b", "c"), FixedNumberGenerator(5))
         cars.race()
 
         cars.getAll()[0].moveOrStop()
 
-        val winners = cars.getWinner().names()
+        val winners = cars.getWinners().names()
         assertThat(winners).isEqualTo("a")
     }
 
     @Test
     fun `자동차 이름에 중복이 있으면 예외를 던진다`() {
         assertThrows<IllegalArgumentException> {
-            Cars(listOf("a", "b", "a"), RandomNumberGenerator)
+            Cars.from(listOf("a", "b", "a"), RandomNumberGenerator)
         }
     }
 }
