@@ -3,9 +3,23 @@ package racingcar.model
 import racingcar.model.numberGenerator.RandomNumberGenerator
 
 class Cars(carNames: List<String>) {
-    val cars = carNames.map { name -> Car(name, RandomNumberGenerator) }
+    private val cars: List<Car> = carNames.map { name -> Car(name, RandomNumberGenerator) }
 
     init {
         require(carNames.distinct().size == carNames.size) { "자동차 이름에 중복이 있습니다." }
+    }
+
+    fun getAll(): List<Car> = cars.toList()
+
+    fun race() {
+        for (car in cars) {
+            car.moveOrStop()
+        }
+    }
+
+    fun getWinner(): List<Car> {
+        val maxPosition = cars.maxOf { car -> car.position }
+        val winners = cars.filter { car -> car.position == maxPosition }
+        return winners
     }
 }

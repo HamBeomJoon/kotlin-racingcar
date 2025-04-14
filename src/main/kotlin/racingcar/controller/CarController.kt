@@ -12,27 +12,18 @@ class CarController(private val view: View) {
         view.printResultHeader()
         repeat(count) {
             race(cars)
+            cars.race()
         }
 
-        printWinner(cars)
+        printWinner(cars.getWinner())
     }
 
-    private fun inputCars(): List<Car> {
+    private fun inputCars(): Cars {
         val carNames = view.readCarNames()
-        return Cars(carNames).cars
+        return Cars(carNames)
     }
 
-    private fun race(cars: List<Car>) {
-        for (car in cars) {
-            car.moveOrStop()
-            view.printRacing(car)
-        }
-        view.printNewLine()
-    }
-
-    private fun printWinner(cars: List<Car>) {
-        val maxPosition = cars.maxOf { car -> car.position }
-        val winners = cars.filter { car -> car.position == maxPosition }
+    private fun printWinner(winners: List<Car>) {
         view.printWinners(winners)
     }
 }
