@@ -1,10 +1,14 @@
 package racingcar.model
 
-class Car(val name: String) {
+class Car(val name: String, private val strategy: NumberGenerator) {
     var position = 0
         private set
 
-    fun move(number: Int) {
-        if (number >= 4) position++
+    fun moveOrStop() {
+        if (judgeMove()) position++
+    }
+
+    private fun judgeMove(): Boolean {
+        return strategy.generate() >= 4
     }
 }

@@ -25,7 +25,7 @@ class CarController(private val view: View) {
 
     private fun race(cars: List<Car>) {
         for (car in cars) {
-            car.move(RandomNumberGenerator.generate())
+            car.moveOrStop()
             view.printRacing(car)
         }
         view.printNewLine()
