@@ -21,9 +21,9 @@ class View {
         }
     }
 
-    fun printWinners(winners: String) {
-        println("최종 우승자: $winners")
-    }
+    fun printWinners(winners: String) = println("최종 우승자: $winners")
 
     fun printNewLine() = println()
+
+    fun printError(message: String) = println("[ERROR] $message\n")
 }
